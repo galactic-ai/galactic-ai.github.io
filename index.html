@@ -51,13 +51,23 @@
   .sidebar nav a { text-decoration: none; font-size: 1.05rem; }
   .sidebar nav a:hover { text-decoration: underline; }
   .gh svg { width: 1.1em; height: 1.1em; fill: currentColor; vertical-align: -0.17em; margin-right: 0.4em; }
+  .sidebar h1 { font-size: 1.9rem; line-height: 1.15; font-weight: 700; margin: 0 0 0.6rem; letter-spacing: -0.01em; }
+  .sidebar .logo { display: block; max-width: 100%; height: auto; }
+  .sidebar .dept { margin: 0; color: var(--muted); font-size: 1rem; line-height: 1.5; }
 
+  .sidebar .logo {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 6px rgba(255,255,255,0.35));
+}
   main { padding: 2.8rem 3rem 5rem; max-width: 62rem; width: 100%; }
 
   h2 { font-size: 2rem; line-height: 1.2; font-weight: 700; letter-spacing: -0.01em; margin: 0 0 1.4rem; padding-bottom: 0.9rem; border-bottom: 1px solid var(--rule); }
   section + section { margin-top: 4rem; }
   h3 { font-size: 0.9rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin: 2.4rem 0 1.1rem; }
   p { margin: 0 0 1rem; max-width: 46rem; }
+
 
   /* News */
   .news { list-style: none; margin: 0; padding: 0; }
@@ -125,7 +135,7 @@
 <div class="layout">
 
 <aside class="sidebar">
-  <h1>galactic.ai</h1>
+  <h1><a href="#about"><img src="images/logo.png" alt="galactic.ai" class="logo"></a></h1>
   <p class="dept">Department of Astronomy, University of Texas at Austin</p>
   <nav aria-label="Sections">
     <a href="#about">About</a>
@@ -143,39 +153,20 @@
 
 <section id="about">
   <h2>About</h2>
-  <p>We are a research group working on machine learning, cosmology and statistical inference. Replace this paragraph with a short description of what the group does and the questions it cares about.</p>
-  <p>Add a second paragraph for methods, software, or collaborations. Mention if you are recruiting students or postdocs, and link to the <a href="#interested">if you’re interested</a> section.</p>
+  <p>The primary goal of the galactic.ai Lab is to combine cutting-edge statistical and ML techniques with the billions of galaxies that will be observed by galaxy surveys to answer fundamental questions in cosmology and galaxy evolution: What is the nature of dark energy that drives the accelerated expansion of the Universe? What is the sum of neutrino masses? How does the underlying dark matter environment of galaxies impact their evolution? <br><br>Our broader goal is to leverage interdisciplinary expertise in ML, observations, and simulations to achieve ambitious science goals in cosmology and astronomy that are out of reach with conventional methods.</p>
 </section>
 
-<!--
-  NEWS: to add an item, copy one <li> below and put the newest one at the top.
--->
 <section id="news">
   <h2>News</h2>
   <ul class="news">
     <li>
-      <time datetime="2026-10">Oct 2026</time>
+      <time datetime="2026-10">Nov 2026</time>
       <div>
         <p class="headline">New group website launched</p>
         <p class="body">Short note about the new site and where to find people, projects and publications.</p>
       </div>
     </li>
-    <li>
-      <time datetime="2026-09">Sep 2026</time>
-      <div>
-        <p class="headline">Paper accepted to Journal Name</p>
-        <p class="body">One or two sentences on the result, with a link to the <a href="#">paper</a>.</p>
-      </div>
-    </li>
-    <li>
-      <time datetime="2026-08">Aug 2026</time>
-      <div>
-        <p class="headline">Talk or award announcement</p>
-        <p class="body">Who gave the talk or received the award, and where.</p>
-      </div>
-    </li>
   </ul>
-  <p class="news-more">Older news: <a href="#">archive</a></p>
 </section>
 
 <section id="people">
@@ -183,11 +174,11 @@
 
   <h3>Faculty</h3>
   <div class="person">
-    <div class="photo" aria-hidden="true">Photo</div>
+    <div class="photo"><img src="images/drhahn.jpg" alt="ChangHoon Hahn"></div>
     <div class="person-body">
       <div class="name">ChangHoon Hahn</div>
       <p class="role">Assistant Professor</p>
-      <p class="bio">One-line research summary.</p>
+      <p class="bio">My work lies in the intersection of large-scale structure cosmology and galaxy evolution and leverages my expertise in observations, simulations, and ML. </p>
       <p class="links">
         <a href="mailto:changhoon.hahn@utexas.edu">changhoon.hahn@utexas.edu</a>
         <a href="https://changhoonhahn.github.io/">Website</a>
@@ -195,18 +186,17 @@
     </div>
     
   </div>
-<!--
+
 
   <h3>Postdocs</h3>
   <div class="person">
-    <div class="photo" aria-hidden="true">Photo</div>
+    <div class="photo"><img src="images/marina.jpg" alt="Marina Cagliari"></div>
     <div class="person-body">
-      <div class="name"><a href="#">Name Surname</a></div>
+      <div class="name"><a href="#">Marina Cagliari</a></div>
       <p class="role">Postdoctoral Researcher</p>
-      <p class="bio">One-line research summary.</p>
+      <p class="bio"></p>
     </div>
   </div>
--->
   
   <h3>Graduate students</h3>
 
@@ -229,12 +219,7 @@
 </div>
 
 
-  <!--
-    PERSON TEMPLATE: copy one <div class="person"> block per student.
-    To show a photo, replace the initials with:
-    <img src="data:image/jpeg;base64,..." alt="Name Surname">
-    (Google Drive links can't be loaded directly into this page, so embed the photo as shown.)
-  -->
+
   <div class="person">
     <div class="photo"><img src="images/nikhil.jpeg" alt="Nikhil Garuda"></div>
     <div class="person-body">
@@ -286,7 +271,7 @@
 
       </ul>
       <p class="project-line">Project: QuassiQ, Metal Absorber</p>
-      <p class="bio">Using Machine learning framework to identify changing-look quasars.</p>
+      <p class="bio"></p>
       <p class="links">
         <a href="mailto:prisha@utexas.edu">prisha@utexas.edu</a>
         <a href="">LinkedIn</a>
@@ -301,14 +286,14 @@
       <div class="name">Kanyuni Iemoto</div>
       <p class="role">Junior Undergraduate student</p>
       <ul class="interests" aria-label="Research interests">
+        <li>Cosmology</li>
         <li>Extragalactic astronomy</li>
-        <li>Computational astronomy</li>
         <li>Astrostatistics</li>
         <li>Cosmological Inference</li>
         <li>Supermassive black holes</li>
       </ul>
       <p class="project-line">Project: QuassiQ</p>
-      <p class="bio">Using Machine learning framework to identify changing-look quasars.</p>
+      <p class="bio">I am a third year astronomy and physics undergraduate. I am broadly interested in cosmology and galaxy evolution using machine learning. </p>
       <p class="links">
         <a href="mailto:kanyuni.iemoto@utexas.edu">kanyuni.iemoto@utexas.edu</a>
         <a href="https://www.linkedin.com/in/kanyuni-iemoto/">LinkedIn</a>
@@ -325,13 +310,15 @@
       <div class="name"> Ananya Srivastava</div>
       <p class="role">Sophomore Undergraduate student</p>
       <ul class="interests" aria-label="Research interests">
-        <li></li>
-
+        <li>Circumgalactic and intergalactic medium</li>
+        <li>Quasar absorption spectroscopy </li>
+        <li>Galaxy and black hole co-evolution</li>
       </ul>
       <p class="project-line">Project: Metal Absorber</p>
-      <p class="bio">Using Machine learning framework to identify changing-look quasars.</p>
+      <p class="bio">"I am an undergraduate at the University of Texas at Austin and a member of the Dean’s Scholars program. I plan to pursue a PhD in astrophysics, with a long-term goal of studying the co-evolution of galaxies and their central supermassive black holes.</p>
+
       <p class="links">
-        <a href="mailto:ananya.srivastava@utexas.edu">as244587@my.utexas.edu</a>
+        <a href="mailto:">as244587@my.utexas.edu</a>
         <a href="">LinkedIn</a>
         <a href="">GitHub</a>
       </p>
@@ -342,7 +329,7 @@
 
 
       <div class="person">
-    <div class="photo"><img src="images/yuka.jpg" alt="Shreya Dayal"></div>
+    <div class="photo"><img src="images/yuka.jpg" alt="Yuka Yamada"></div>
     <div class="person-body">
       <div class="name">Yuka Yamada</div>
       <p class="role">Graduate student</p>
@@ -374,22 +361,30 @@
     <h4>UberSED</h4>
     <p class="meta">People: Nikhil Garuda</p>
     <p>Data-driven techniques to extract physical properties from galaxy spectra, using machine learning to test current theoretical models against observations.</p>
-    <p><a href="#">Paper</a>, <a href="#">code</a></p>
+    <p><a href="#"></a><a href="#"></a></p>
   </div>
 
   <div class="project">
     <h4>Pixel to Cosmology (Px2Cosmo)</h4>
     <p class="meta">People: Shreya Dayal</p>
     <p>Simulation-based inference and neural density estimation to measure cosmological parameters from high-redshift galaxy populations.</p>
-    <p><a href="#">Paper</a>, <a href="#">code</a></p>
+    <p><a href="#"></a><a href="#"></a></p>
   </div>
 
   <div class="project">
     <h4>QuassiQ</h4>
     <p class="meta">People: Prisha Desai, Kanyuni Iemoto</p>
     <p>Using Machine learning framework to identify changing-look quasars.</p>
-    <p><a href="#">Paper</a>, <a href="https://github.com/galactic-ai/quassiQ">code</a></p>
+    <p><a href="#"></a><a href="https://github.com/galactic-ai/quassiQ">code</a></p>
   </div>
+
+    <div class="project">
+    <h4>Metal Absorber</h4>
+    <p class="meta">People: Prisha Desai, Ananya Srivastava</p>
+    <p>We use SpenderQ, a spectral autoencoder, to estimate quasar continua and detects and identifies metal absorption lines in quasar spectra. We apply this framework to the unprecedented volume of quasar spectra from the Dark Energy Spectroscopic Instrument (DESI) to compile a catalog of metal absorber systems, including Mg II and Fe II.</p>
+    <p><a href="#">Paper</a><a href="#"></a></p>
+  </div>
+
 </section>
 
 <section id="publications">
@@ -398,10 +393,12 @@
   <h3>2026</h3>
   <ul class="pubs">
     <li>
-      Paper Title Goes Here<br>
-      <span class="authors">Name Surname, Name Surname, Name Surname</span><br>
-      Journal Name, Volume, Pages (2026) · <a href="#">arXiv</a> · <a href="#">code</a>
+      HaloFlow II: Robust Galaxy Halo Mass Inference with Domain Adaptation<br>
+      <span class="authors">Nikhil Garuda, ChangHoon Hahn, Connor Bottrell, Khee-Gan Lee</span><br>
+      <a href="https://arxiv.org/abs/2603.12380">arXiv</a> · <a href="https://github.com/galactic-ai/haloflow">code</a>
     </li>
+    <!--
+
     <li>
       Paper Title Goes Here<br>
       <span class="authors">Name Surname, Name Surname</span><br>
@@ -409,22 +406,7 @@
     </li>
   </ul>
 
-  <h3>2025</h3>
-  <ul class="pubs">
-    <li>
-      Paper Title Goes Here<br>
-      <span class="authors">Name Surname, Name Surname, Name Surname</span><br>
-      Journal Name, Volume, Pages (2025) · <a href="#">arXiv</a> · <a href="#">code</a>
-    </li>
-    <li>
-      Paper Title Goes Here<br>
-      <span class="authors">Name Surname, Name Surname</span><br>
-      Journal Name, Volume, Pages (2025) · <a href="#">arXiv</a>
-    </li>
-  </ul>
-
-  <p>Full list on <a href="#">ADS</a> or <a href="#">Google Scholar</a>.</p>
-</section>
+-->
 
 <section id="interested">
   <h2>If you’re interested</h2>
