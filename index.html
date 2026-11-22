@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>galactic.ai – Machine Learning, Cosmology and Inference</title>
-<meta name="description" content="The galactic.ai Lab at UT Austin combines machine learning and galaxy surveys to study cosmology and galaxy evolution.">
+<meta name="description" content="The galactic.ai Lab in the Department of Astronomy at UT Austin combines machine learning and galaxy surveys to study cosmology and galaxy evolution.">
 <meta name="google-site-verification" content="OeKF6qWrbZKHneJduxYKmaCG51PNDZ5Yze9l3YU5Xd0" />
 <link rel="icon" type="image/png" href="images/favicon.png?v=3">
 <link rel="apple-touch-icon" href="images/favicon.png">
@@ -83,6 +83,12 @@
   .news-more { margin-top: 1rem; font-size: 0.95rem; color: var(--muted); }
 
   /* People */
+  .people-nav { display: flex; flex-wrap: wrap; column-gap: 1.2rem; margin: -0.25rem 0 0; }
+  .people-nav a { padding: 0.3rem 0; font-size: 0.9rem; text-underline-offset: 0.2em; }
+  .people-nav a:hover { color: var(--text); }
+  .people-nav + h3 { margin-top: 1.7rem; }
+  #people h3 { scroll-margin-top: 1rem; }
+  #people h3:target { color: var(--text); }
   .person { display: flex; gap: 1.4rem; margin: 0 0 2.2rem; align-items: flex-start; }
   .photo {
     flex: 0 0 96px; width: 96px; height: 96px; border-radius: 50%;
@@ -93,27 +99,34 @@
   .photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .person-body { min-width: 0; }
   .person .name { font-weight: 700; font-size: 1.1rem; line-height: 1.35; }
-  .person .name a { color: var(--link); }
   .person .role { color: var(--muted); margin: 0 0 0.6rem; }
-  .interests { list-style: none; display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0 0 0.8rem; padding: 0; }
-  .interests li { font-size: 0.85rem; line-height: 1.3; padding: 0.2rem 0.65rem; border: 1px solid var(--chip-border); background: var(--chip-bg); border-radius: 999px; }
+  .interests { margin: 0 0 0.55rem; color: var(--text); font-size: 0.92rem; }
+  .interests strong { color: var(--muted); font-weight: 600; }
   .person .project-line { margin: 0 0 0.3rem; font-weight: 600; max-width: none; }
   .person .bio { margin: 0 0 0.7rem; max-width: 42rem; }
-  .person .links { margin: 0; font-size: 0.95rem; display: flex; flex-wrap: wrap; gap: 0.3rem 1.2rem; max-width: none; }
+  .person .links { margin: 0; font-size: 0.9rem; display: flex; align-items: center; flex-wrap: wrap; gap: 0.15rem 0.45rem; max-width: none; overflow-wrap: anywhere; }
+  .person .links a { text-underline-offset: 0.2em; }
+  .profile-icon { display: inline-flex; align-items: center; justify-content: center; gap: 0.3rem; min-width: 2rem; min-height: 2rem; color: var(--muted); text-decoration: none; }
+  .profile-icon:hover { color: var(--text); }
+  .profile-icon svg { width: 1.05rem; height: 1.05rem; fill: currentColor; flex: none; }
 
   /* Projects */
-  .project { margin: 0 0 2rem; }
-  .project h4 { font-size: 1.1rem; margin: 0 0 0.2rem; }
-  .project .meta { color: var(--muted); font-size: 0.95rem; margin: 0 0 0.4rem; }
+  .project-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; align-items: start; }
+  .project { display: flex; flex-direction: column; padding: 1.15rem 1.25rem; border: 1px solid var(--rule); border-top: 2px solid var(--chip-border); border-radius: 4px; }
+  .project h3 { color: var(--text); font-size: 1.08rem; letter-spacing: normal; line-height: 1.35; margin: 0 0 0.35rem; text-transform: none; }
+  .project .meta { color: var(--muted); font-size: 0.85rem; margin: 0 0 0.7rem; }
+  .project .project-details { margin-top: auto; padding-top: 0.75rem; }
+  .project summary { width: fit-content; padding: 0.2rem 0; cursor: pointer; color: var(--link); font-size: 0.9rem; }
+  .project summary:hover { text-decoration: underline; text-underline-offset: 0.2em; }
+  .project summary:focus-visible { outline: 2px solid var(--link); outline-offset: 3px; }
+  .project .details-text { margin-top: 0.65rem; padding-top: 0.75rem; border-top: 1px solid var(--rule); font-size: 0.93rem; }
+  .project .details-text p:last-child { margin-bottom: 0; }
 
   /* Publications */
   .pubs { padding-left: 1.2rem; margin: 0 0 1rem; max-width: 46rem; }
   .pubs li { margin: 0 0 1rem; }
   .pubs .authors { color: var(--muted); }
 
-  .interest-box { border: 1px solid var(--chip-border); background: var(--chip-bg); border-radius: 12px; padding: 1.4rem 1.6rem; max-width: 46rem; }
-  .interest-box p:last-child { margin-bottom: 0; }
-  .interest-box .pi { font-weight: 600; }
 
   footer { margin-top: 4rem; padding-top: 1rem; border-top: 1px solid var(--rule); color: var(--muted); font-size: 0.9rem; }
 
@@ -125,16 +138,106 @@
     main { padding: 2rem 1.25rem 4rem; }
     h2 { font-size: 1.6rem; }
   }
+  @media (max-width: 640px) {
+    .project-grid { grid-template-columns: 1fr; }
+  }
   @media (max-width: 520px) {
     body { font-size: 16px; }
     .news li { grid-template-columns: 1fr; }
-    .person { gap: 1rem; }
-    .photo { flex-basis: 72px; width: 72px; height: 72px; }
+    .photo { width: 64px; height: 64px; }
+    .person { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 0 1rem; }
+    .person .photo { grid-column: 1; grid-row: 1 / span 2; }
+    .person-body { display: contents; }
+    .person-body > * { grid-column: 1 / -1; }
+    .person-body > .name, .person-body > .role { grid-column: 2; }
+    .person .name { align-self: end; }
+    .person .role { margin-bottom: 0; }
+    .person .interests, .person .role + .bio { margin-top: 0.65rem; }
   }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+  /* People jump links */
+.people-nav { gap: 0.5rem; }
+
+.people-nav a {
+  padding: 0.35rem 0.7rem;
+  border: 1px solid var(--chip-border);
+  border-radius: 3px;
+  text-decoration: none;
+}
+
+.people-nav a:hover,
+.people-nav a:focus-visible {
+  background: var(--chip-bg);
+  border-color: var(--link);
+}
+
+/* Project hover */
+.project:hover,
+.project:focus-within {
+  border-color: var(--link);
+}
+
+.project summary {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.project summary::-webkit-details-marker { display: none; }
+
+.project summary::after {
+  content: "";
+  width: 0.4rem;
+  height: 0.4rem;
+  border: solid currentColor;
+  border-width: 0 1px 1px 0;
+  transform: rotate(45deg);
+  transition: translate 150ms ease;
+}
+
+.project summary:hover::after { translate: 0 2px; }
+.project details[open] summary::after { transform: rotate(225deg); }
+
+@media (prefers-reduced-motion: reduce) {
+  .project summary::after { transition: none; }
+}
+
+.about-link {
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid var(--chip-border);
+  border-radius: 3px;
+  text-decoration: none;
+}
+#about .lab-name {
+  color: var(--link);
+  font-weight: 600;
+}
+
+.about-link:hover,
+.about-link:focus-visible {
+  border-color: var(--link);
+  background: var(--chip-bg);
+}
+
+#about + #news {
+  margin-top: 2.75rem;
+}
+
+#projects > ul + .project-grid {
+  margin-top: 2rem;
+}
 </style>
 </head>
 <body>
+
+<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="0" height="0" style="position: absolute">
+  <symbol id="icon-orcid" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0ZM4.25 4.5a.85.85 0 1 0 0 1.7.85.85 0 0 0 0-1.7Zm.65 2.4H3.6v4.55h1.3V6.9Zm1.45-1.6v6.15h2.5c2.1 0 3.35-1.28 3.35-3.08S10.97 5.3 8.85 5.3h-2.5Zm1.3 1.15h1.16c1.3 0 2.05.72 2.05 1.92 0 1.22-.75 1.93-2.05 1.93H7.65V6.45Z"/></symbol>
+  <symbol id="icon-linkedin" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.5 1h13A1.5 1.5 0 0 1 16 2.5v11a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 13.5v-11A1.5 1.5 0 0 1 1.5 1ZM3 6h2v6H3V6Zm1-3a1.1 1.1 0 1 0 0 2.2A1.1 1.1 0 0 0 4 3Zm2.5 3h1.92v.84c.41-.58 1.03-1 2-1 1.6 0 2.58.9 2.58 2.74V12h-2V8.95c0-.91-.37-1.41-1.12-1.41-.82 0-1.38.56-1.38 1.48V12h-2V6Z"/></symbol>
+  <symbol id="icon-github" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></symbol>
+  <symbol id="icon-website" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1ZM2.05 7.5a6 6 0 0 1 3.72-5.04A10.2 10.2 0 0 0 4.6 7.5H2.05Zm0 1H4.6c.06 1.9.48 3.72 1.17 5.04A6 6 0 0 1 2.05 8.5ZM5.6 7.5C5.7 4.33 6.77 2 8 2s2.3 2.33 2.4 5.5H5.6Zm0 1h4.8C10.3 11.67 9.23 14 8 14s-2.3-2.33-2.4-5.5Zm5.8-1a10.2 10.2 0 0 0-1.17-5.04 6 6 0 0 1 3.72 5.04H11.4Zm0 1h2.55a6 6 0 0 1-3.72 5.04A10.2 10.2 0 0 0 11.4 8.5Z"/></symbol>
+</svg>
 
 <div class="layout">
 
@@ -157,7 +260,8 @@
 
 <section id="about">
   <h2>About</h2>
-  <p>The primary goal of the galactic.ai Lab is to combine cutting-edge statistical and ML techniques with the billions of galaxies that will be observed by galaxy surveys to answer fundamental questions in cosmology and galaxy evolution: What is the nature of dark energy that drives the accelerated expansion of the Universe? What is the sum of neutrino masses? How does the underlying dark matter environment of galaxies impact their evolution? <br><br>Our broader goal is to leverage interdisciplinary expertise in ML, observations, and simulations to achieve ambitious science goals in cosmology and astronomy that are out of reach with conventional methods.</p>
+  <p><span class="lab-name">The galactic.ai Lab</span> at UT Austin combines statistics, machine learning, observations, and simulations to study cosmology and galaxy evolution.</p>
+  <a class="about-link" href="#projects">Explore projects →</a>
 </section>
 
 <section id="news">
@@ -174,62 +278,62 @@
 
 <section id="people">
   <h2>People</h2>
+  <nav class="people-nav" aria-label="People by role">
+    <a href="#faculty">Faculty</a>
+    <a href="#postdocs">Postdocs</a>
+    <a href="#graduate-students">Graduate students</a>
+    <a href="#undergraduate-students">Undergraduate students</a>
+    <a href="#affiliates">Affiliates</a>
+  </nav>
 
-  <h3>Faculty</h3>
+  <h3 id="faculty">Faculty</h3>
   <div class="person">
     <div class="photo"><img src="images/drhahn.jpg" alt="ChangHoon Hahn"></div>
     <div class="person-body">
       <div class="name">ChangHoon Hahn</div>
       <p class="role">Assistant Professor</p>
+      <p class="interests"><strong>Research interests:</strong> Large-scale structure cosmology, galaxy evolution, machine learning</p>
       <p class="bio">My research develops and applies cutting-edge machine learning (ML) methods to the millions of galaxies observed by galaxy surveys to answer fundamental questions in cosmology and galaxy evolution. My work lies in the intersection of large-scale structure cosmology and galaxy evolution and leverages my expertise in observations, simulations, and ML. </p>
       <p class="links">
         <a href="mailto:changhoon.hahn@utexas.edu">changhoon.hahn@utexas.edu</a>
-        <a href="https://changhoonhahn.github.io/">Website</a>
+        <a class="profile-icon" href="https://changhoonhahn.github.io/" aria-label="Personal website" title="Personal website"><svg aria-hidden="true"><use href="#icon-website"/></svg></a>
       </p>
     </div>
     
   </div>
 
 
-  <h3>Postdocs</h3>
+  <h3 id="postdocs">Postdocs</h3>
   <div class="person">
     <div class="photo"><img src="images/marina.jpg" alt="Marina Cagliari"></div>
     <div class="person-body">
-      <div class="name"><a href="#">Marina Cagliari</a></div>
+      <div class="name">Marina Cagliari</div>
       <p class="role">Postdoctoral Researcher</p>
-      <ul class="interests" aria-label="Research interests">
-      <li>Cosmology</li> 
-      <li>Large-Scale Structures</li> 
-      <li>Machine learning</li>
-      <li>Sutainability</li>
-      </ul>
+      <p class="interests"><strong>Research interests:</strong> Cosmology, Large-Scale Structures, Machine learning, Sustainability</p>
       <p class="project-line">Project: Exploring alternative halo finders for approximate cosmological simulations</p>
       <p class="bio">I am a postdoctoral fellow at UT Austin. My research focuses on developing new methods to maximize the cosmological information extracted from large-scale structure data, with particular emphasis on machine learning. Throughout my career, I have applied machine-learning techniques to several stages of cosmological analysis, from data selection and cleaning to simulation-based inference.</p>
       <p class="links">
-        <a href="https://orcid.org/0000-0002-2912-9233">ORCiD</a>
+        <a class="profile-icon" href="https://orcid.org/0000-0002-2912-9233" aria-label="ORCID" title="ORCID"><svg aria-hidden="true"><use href="#icon-orcid"/></svg></a>
+        <a class="profile-icon" href="https://www.linkedin.com/in/marina-silvia-cagliari-phd-886a123b6" aria-label="LinkedIn" title="LinkedIn"><svg aria-hidden="true"><use href="#icon-linkedin"/></svg></a>
         <a href="https://inspirehep.net/authors/1922185">INSPIRE</a>
-        <a href="https://github.com/mcagliari">GitHub</a>
-        <a href="https://www.linkedin.com/in/marina-silvia-cagliari-phd-886a123b6">LinkedIn</a>
+
       </p>
     </div>
   </div>
   
-  <h3>Graduate students</h3>
+  <h3 id="graduate-students">Graduate students</h3>
 
   <div class="person">
   <div class="photo"><img src="images/madeline.png" alt="Madeline Casas"></div>
   <div class="person-body">
     <div class="name">Madeline Casas</div>
     <p class="role">Graduate student</p>
-    <ul class="interests" aria-label="Research interests">
-      <li>Cosmology & Large Scale Structure</li>
-      <li>Machine Learning & Statistics</li>
-    </ul>
+    <p class="interests"><strong>Research interests:</strong> Cosmology &amp; Large Scale Structure, Machine Learning &amp; Statistics</p>
     <p class="project-line">Project: SimBIG: Simulation Based Inference of Galaxies</p>
     <p class="bio">I am a 2nd-year graduate student at UT Austin. I am broadly interested in the intersections of machine-learning methods and cosmology. I am currently developing SimBIG-II, a scalable forward-modeling pipeline to extract cosmological information from large spectroscopic surveys of galaxies (e.g. DESI). When I'm not doing cosmology (read: debugging my code), I enjoy reading, swimming, yoga, and spending time outdoors!</p>
     <p class="links">
-      <a href="mailto:name@utexas.edu">mcasas@utexas.edu</a>
-      <a href="https://www.linkedin.com/in/madeline-casas-777746167">LinkedIn</a>
+      <a href="mailto:mcasas@utexas.edu">mcasas@utexas.edu</a>
+      <a class="profile-icon" href="https://www.linkedin.com/in/madeline-casas-777746167" aria-label="LinkedIn" title="LinkedIn"><svg aria-hidden="true"><use href="#icon-linkedin"/></svg></a>
     </p>
   </div>
 </div>
@@ -241,10 +345,7 @@
     <div class="person-body">
       <div class="name">Nikhil Garuda</div>
       <p class="role">Graduate student</p>
-      <ul class="interests" aria-label="Research interests">
-        <li>Extragalactic astronomy</li>
-        <li>Machine learning</li>
-      </ul>
+      <p class="interests"><strong>Research interests:</strong> Extragalactic astronomy, Machine learning</p>
       <p class="project-line">Project: UberSED</p>
       <p class="bio">I am a second year graduate student working on data-driven techniques to maximally extract physical properties from galaxy spectra. My work lies on the intersection of observations and theory where I am using machine learning techniques to learn and challenge current theoretical models with respect to observations.</p>
       <p class="links"><a href="mailto:garuda@utexas.edu">garuda@utexas.edu</a></p>
@@ -256,43 +357,32 @@
     <div class="person-body">
       <div class="name">Shreya Dayal</div>
       <p class="role">Graduate student</p>
-      <ul class="interests" aria-label="Research interests">
-        <li>Computational cosmology</li>
-        <li>Machine learning</li>
-        <li>Bayesian inference</li>
-        <li>High-redshift galaxies</li>
-        <li>Dark matter</li>
-      </ul>
+      <p class="interests"><strong>Research interests:</strong> Computational cosmology, Machine learning, Bayesian inference, High-redshift galaxies, Dark matter</p>
       <p class="project-line">Project: Pixel to Cosmology</p>
       <p class="bio">My research focuses on developing machine learning and simulation-based inference methods to extract cosmological information from high-redshift galaxy populations. As part of the Pixel-to-Cosmology (Px2Cosmo) project, I am exploring neural density estimation and Bayesian inference techniques to improve cosmological parameter estimation, with the broader goal of constraining cosmological models and dark matter properties using observations of the early universe.</p>
       <p class="links">
         <a href="mailto:sd47844@eid.utexas.edu">sd47844@eid.utexas.edu</a>
-        <a href="https://www.linkedin.com/in/shreya-dayal">LinkedIn</a>
-        <a href="https://github.com/shreyad1997">GitHub</a>
+        <a class="profile-icon" href="https://www.linkedin.com/in/shreya-dayal" aria-label="LinkedIn" title="LinkedIn"><svg aria-hidden="true"><use href="#icon-linkedin"/></svg></a>
+        <a class="profile-icon" href="https://github.com/shreyad1997" aria-label="GitHub" title="GitHub"><svg aria-hidden="true"><use href="#icon-github"/></svg></a>
       </p>
     </div>
   </div>
 
 
 
-  <h3>Undergraduate students</h3>
+  <h3 id="undergraduate-students">Undergraduate students</h3>
 
     <div class="person">
     <div class="photo"><img src="images/prisha.jpg" alt="Prisha Desai"></div>
     <div class="person-body">
       <div class="name">Prisha Desai</div>
       <p class="role">Undergraduate student</p>
-      <ul class="interests" aria-label="Research interests">
-        <li>Observational cosmology</li>
-        <li>AGN</li>
-
-      </ul>
+      <p class="interests"><strong>Research interests:</strong> Observational cosmology, AGN</p>
       <p class="project-line">Project: QuassiQ, Metal Absorber</p>
       <p class="bio">I am a fourth-year undergraduate studying astronomy and physics. My research interests are active galactic nuclei (AGNs) and observational cosmology, particularly using data-driven and machine learning techniques. Outside of research, I enjoy swimming, café hopping, and watching Formula 1.</p>
       <p class="links">
         <a href="mailto:prisha@utexas.edu">prisha@utexas.edu</a>
-        <a href="https://www.linkedin.com/in/prisha-desai/">LinkedIn</a>
-        <a href="">GitHub</a>
+        <a class="profile-icon" href="https://www.linkedin.com/in/prisha-desai/" aria-label="LinkedIn" title="LinkedIn"><svg aria-hidden="true"><use href="#icon-linkedin"/></svg></a>
       </p>
     </div>
   </div>  
@@ -302,21 +392,16 @@
     <div class="person-body">
       <div class="name">Kanyuni Iemoto</div>
       <p class="role">Undergraduate student</p>
-      <ul class="interests" aria-label="Research interests">
-        <li>Cosmology</li>
-        <li>Extragalactic astronomy</li>
-        <li>Astrostatistics</li>
-        <li>Cosmological Inference</li>
-        <li>Supermassive black holes</li>
-      </ul>
+      <p class="interests"><strong>Research interests:</strong> Cosmology, Extragalactic astronomy, Astrostatistics, Cosmological Inference, Supermassive black holes</p>
       <p class="project-line">Project: QuassiQ</p>
       <p class="bio">I am a third year astronomy and physics undergraduate. I am broadly interested in cosmology and galaxy evolution using machine learning. </p>
       <p class="links">
         <a href="mailto:kanyuni.iemoto@utexas.edu">kanyuni.iemoto@utexas.edu</a>
-        <a href="https://orcid.org/0009-0006-5048-6290">ORCiD
-        <a href="https://inspirehep.net/authors/3183836?ui-citation-summary=true">INSPIRE
-        <a href="https://www.linkedin.com/in/kanyuni-iemoto/">LinkedIn</a>
-        <a href="https://github.com/yuni1218">GitHub</a>
+        <a class="profile-icon" href="https://orcid.org/0009-0006-5048-6290" aria-label="ORCID" title="ORCID"><svg aria-hidden="true"><use href="#icon-orcid"/></svg></a>
+        <a class="profile-icon" href="https://www.linkedin.com/in/kanyuni-iemoto/" aria-label="LinkedIn" title="LinkedIn"><svg aria-hidden="true"><use href="#icon-linkedin"/></svg></a>
+        <a class="profile-icon" href="https://github.com/yuni1218" aria-label="GitHub" title="GitHub"><svg aria-hidden="true"><use href="#icon-github"/></svg></a>
+        <a href="https://inspirehep.net/authors/3183836?ui-citation-summary=true">INSPIRE</a>
+
       </p>
       </div>
     </div>
@@ -328,23 +413,17 @@
     <div class="person-body">
       <div class="name"> Ananya Srivastava</div>
       <p class="role">Undergraduate student</p>
-      <ul class="interests" aria-label="Research interests">
-        <li>Circumgalactic and intergalactic medium</li>
-        <li>Quasar absorption spectroscopy </li>
-        <li>Galaxy and black hole co-evolution</li>
-      </ul>
+      <p class="interests"><strong>Research interests:</strong> Circumgalactic and intergalactic medium, Quasar absorption spectroscopy, Galaxy and black hole co-evolution</p>
       <p class="project-line">Project: Metal Absorber</p>
-      <p class="bio">"I am an undergraduate at the University of Texas at Austin and a member of the Dean’s Scholars program. I plan to pursue a PhD in astrophysics, with a long-term goal of studying the co-evolution of galaxies and their central supermassive black holes.</p>
+      <p class="bio">I am an undergraduate at the University of Texas at Austin and a member of the Dean’s Scholars program. I plan to pursue a PhD in astrophysics, with a long-term goal of studying the co-evolution of galaxies and their central supermassive black holes.</p>
 
       <p class="links">
-        <a href="mailto:">as244587@my.utexas.edu</a>
-        <a href="">LinkedIn</a>
-        <a href="">GitHub</a>
+        <a href="mailto:as244587@my.utexas.edu">as244587@my.utexas.edu</a>
       </p>
       </div>
     </div>
 
-  <h3>Affiliates/Friends</h3>
+  <h3 id="affiliates">Affiliates/Friends</h3>
 
 
       <div class="person">
@@ -352,18 +431,11 @@
     <div class="person-body">
       <div class="name">Yuka Yamada</div>
       <p class="role">Graduate student</p>
-      <ul class="interests" aria-label="Research interests">
-        <li>Large Scale Structure</li>
-        <li>Galaxy survey</li>
-        <li>Emission line galaxies</li>
-
-      </ul>
+      <p class="interests"><strong>Research interests:</strong> Large Scale Structure, Galaxy survey, Emission line galaxies</p>
       <p class="project-line">Project: Preparation for clustering analysis using PFS [OII] emission line galaxies</p>
       <p class="bio">I'm a PhD student at the University of Tokyo, working with the PFS collaboration. I have been working on looking into and mitigating the observational systematics on the PFS galaxies in order to get a reliable clustering measurement. The science goal would be to measure the large scale environmental effects on the galaxy property using clustering statistics.</p>
         <p class="links">
-          <a href="mailto:">yamada-yuka0322@g.ecc.u-tokyo.ac.jp</a>
-          <a href="">LinkedIn</a>
-          <a href="">GitHub</a>
+          <a href="mailto:yamada-yuka0322@g.ecc.u-tokyo.ac.jp">yamada-yuka0322@g.ecc.u-tokyo.ac.jp</a>
         </p>
     </div>
 
@@ -377,40 +449,68 @@
 
 <section id="projects">
   <h2>Projects</h2>
-
-  <div class="project">
-  <h4>Exploring alternative halo finders for approximate cosmological simulations</h4>
-  <p class="meta">People: Marina Cagliari</p>
-  <p>The large volumes of modern spectroscopic surveys make building the large suites of simulations required for simulation-based inference (SBI) extremely challenging. In this project I explore alternatives to accurate but costly gravitational solvers and halo finders for preparing halo catalogs for SBI analyses. In particular, I apply the relaxed Friends-of-Friends (rFoF) halo finder to fast particle-mesh FastPM simulations. rFoF is a modified version of the standard Friends-of-Friends (FoF) finder, made more flexible by a set of free parameters that can be tuned to reproduce the halo clustering of high-resolution simulations. I train SBI models on FoF and rFoF halo catalogs, jointly inferring cosmology and the rFoF parameters, and test them on Quijote N-body simulations with Rockstar halo catalogs. The aim is to assess whether rFoF improves on FoF and whether this approach could be applied to real-data analyses.</p>
+  <p>We use data from galaxy surveys to tackle fundamental questions in cosmology
+  and galaxy evolution.</p>
+  <ul>
+    <li>What is the nature of the dark energy driving the universe’s accelerating expansion?</li>
+    <li>What is the sum of the neutrino masses?</li>
+    <li>How does the dark matter around galaxies affect their evolution?</li>
+  </ul>
+  <div class="project-grid">
+    <article class="project">
+      <h3>Exploring alternative halo finders for approximate cosmological simulations</h3>
+      <p class="meta">Marina Cagliari</p>
+      <details class="project-details">
+        <summary aria-label="View details for Exploring alternative halo finders for approximate cosmological simulations">View details</summary>
+        <div class="details-text">
+          <p>Tests whether a faster way to identify dark matter halos can recover cosmological information from approximate simulations.</p>
+          <p>The large volumes of modern spectroscopic surveys make building the large suites of simulations required for simulation-based inference (SBI) extremely challenging. In this project I explore alternatives to accurate but costly gravitational solvers and halo finders for preparing halo catalogs for SBI analyses. In particular, I apply the relaxed Friends-of-Friends (rFoF) halo finder to fast particle-mesh FastPM simulations. rFoF is a modified version of the standard Friends-of-Friends (FoF) finder, made more flexible by a set of free parameters that can be tuned to reproduce the halo clustering of high-resolution simulations. I train SBI models on FoF and rFoF halo catalogs, jointly inferring cosmology and the rFoF parameters, and test them on Quijote N-body simulations with Rockstar halo catalogs. The aim is to assess whether rFoF improves on FoF and whether this approach could be applied to real-data analyses.</p>
+        </div>
+      </details>
+    </article>
+    <article class="project">
+      <h3>HuberSED: Extract physical properties from galaxy spectra</h3>
+      <p class="meta">Nikhil Garuda</p>
+      <details class="project-details">
+        <summary aria-label="View details for UberSED">View details</summary>
+        <div class="details-text">
+          <p>Data-driven techniques to extract physical properties from galaxy spectra, using machine learning to test current theoretical models against observations.</p>
+        </div>
+      </details>
+    </article>
+    <article class="project">
+      <h3>Pixel to Cosmology (Px2Cosmo): Measure cosmological parameters from high-z galaxies</h3>
+      <p class="meta">Shreya Dayal</p>
+      <details class="project-details">
+        <summary aria-label="View details for Pixel to Cosmology (Px2Cosmo)">View details</summary>
+        <div class="details-text">
+          <p>Simulation-based inference and neural density estimation to measure cosmological parameters from high-redshift galaxy populations.</p>
+        </div>
+      </details>
+    </article>
+    <article class="project">
+      <h3>QuassiQ: Identify changing-look Quasars</h3>
+      <p class="meta">Prisha Desai, Kanyuni Iemoto</p>
+      <details class="project-details">
+        <summary aria-label="View details for QuassiQ">View details</summary>
+        <div class="details-text">
+          <p>Looks for changing-look quasar candidates in DESI DR1 spectra by tracking changes in how a machine learning model represents each spectrum.</p>
+          <p>We apply SpenderQ, a machine learning framework, to DESI DR1 quasar spectra and explore variability in its latent representations to identify additional changing-look quasar candidates. This approach complements existing detection methods based on flux variability.</p>
+          <p><a class="gh" href="https://github.com/galactic-ai/quassiQ"><svg aria-hidden="true"><use href="#icon-github"/></svg>View source code</a></p>
+        </div>
+      </details>
+    </article>
+    <article class="project">
+      <h3>Metal Absorber: Map metal absorber systems</h3>
+      <p class="meta">Prisha Desai, Ananya Srivastava</p>
+      <details class="project-details">
+        <summary aria-label="View details for Metal Absorber">View details</summary>
+        <div class="details-text">
+          <p>The circumgalactic and intergalactic medium (CGM/IGM) encodes key signatures of galaxy formation, including gas accretion and feedback-driven outflows, and is thought to contain the majority of baryons in the Universe. Absorption spectroscopy is a powerful probe of this diffuse gas, but detecting absorption lines depends on accurately reconstructing the intrinsic continuum of the background source. We use SpenderQ, a spectral autoencoder, to estimate quasar continua and build an automated pipeline that detects and identifies metal absorption lines in quasar spectra. We apply this framework to the unprecedented volume of quasar spectra from the Dark Energy Spectroscopic Instrument (DESI) to compile a catalog of metal absorber systems, including Mg II and Fe II.</p>
+        </div>
+      </details>
+    </article>
   </div>
-  <div class="project">
-    <h4>UberSED</h4>
-    <p class="meta">People: Nikhil Garuda</p>
-    <p>Data-driven techniques to extract physical properties from galaxy spectra, using machine learning to test current theoretical models against observations.</p>
-    <p><a href="#"></a><a href="#"></a></p>
-  </div>
-
-  <div class="project">
-    <h4>Pixel to Cosmology (Px2Cosmo)</h4>
-    <p class="meta">People: Shreya Dayal</p>
-    <p>Simulation-based inference and neural density estimation to measure cosmological parameters from high-redshift galaxy populations.</p>
-    <p><a href="#"></a><a href="#"></a></p>
-  </div>
-
-  <div class="project">
-    <h4>QuassiQ</h4>
-    <p class="meta">People: Prisha Desai, Kanyuni Iemoto</p>
-    <p>We apply SpenderQ, a machine learning based framework, to DESI DR1 quasar spectra and exploring variability in its latent representations to identify additional changing-look quasar candidates. This approach complements existing detection methods based on flux variability.</p>
-    <p><a href="#"></a><a href="https://github.com/galactic-ai/quassiQ">code</a></p>
-  </div>
-
-    <div class="project">
-    <h4>Metal Absorber</h4>
-    <p class="meta">People: Prisha Desai, Ananya Srivastava</p>
-    <p>The circumgalactic and intergalactic medium (CGM/IGM) encodes key signatures of galaxy formation, including gas accretion and feedback-driven outflows, and is thought to contain the majority of baryons in the Universe. Absorption spectroscopy is a powerful probe of this diffuse gas, but detecting absorption lines depends on accurately reconstructing the intrinsic continuum of the background source. We use SpenderQ, a spectral autoencoder, to estimate quasar continua and build an automated pipeline that detects and identifies metal absorption lines in quasar spectra. We apply this framework to the unprecedented volume of quasar spectra from the Dark Energy Spectroscopic Instrument (DESI) to compile a catalog of metal absorber systems, including Mg II and Fe II.</p>
-    <p><a href="#"></a><a href="#"></a></p>
-  </div>
-
 </section>
 
 <section id="publications">
@@ -421,8 +521,8 @@
     <li>
       HaloFlow II: Robust Galaxy Halo Mass Inference with Domain Adaptation<br>
       <span class="authors">Nikhil Garuda, ChangHoon Hahn, Connor Bottrell, Khee-Gan Lee</span><br>
-      <a href="https://arxiv.org/abs/2603.12380">arXiv</a> · <a href="https://github.com/galactic-ai/haloflow">code</a>
-    </li>
+      <a href="https://arxiv.org/abs/2603.12380">arXiv</a>
+    
     <!--
 
     <li>
@@ -452,7 +552,7 @@
     galactic.ai<br>
     Department of Astronomy<br>
     University of Texas at Austin<br>
-    Street Address, Austin, TX, Postcode
+    2515 Speedway, Austin, TX 78712
   </p>
   <p>Email: <a href="mailto:changhoon.hahn@utexas.edu">changhoon.hahn@utexas.edu</a></p>
   <p class="gh"><a href="https://github.com/galactic-ai/"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>github.com/galactic-ai</a></p>
